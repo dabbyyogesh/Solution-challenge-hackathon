@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #c7d2fe; border-radius: 3px; }
+
+/* ── Notification pulse ── */
+@keyframes pulse-red {
+    0%   { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6); }
+    70%  { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+.notify-pulse { animation: pulse-red 2s infinite; }
+
+/* ── Shimmer loading ── */
+@keyframes shimmer {
+    0%   { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+}
+.shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 400px 100%;
+    animation: shimmer 1.4s infinite;
+}
+
+/* ── Slide-in ── */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.animate-slide-down  { animation: slideDown 0.25s ease both; }
+.animate-slide-up    { animation: slideUp  0.25s ease both; }
+.animate-fade-in     { animation: fadeIn   0.3s  ease both; }
+
+/* ── Card hover lift ── */
+.card-lift {
+    transition: transform 0.3s cubic-bezier(.25,.8,.25,1),
+                box-shadow 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.10);
+}
+
+/* ── Glassmorphism helper ── */
+.glass {
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.45);
+}
+
+/* ── Gradient mesh background ── */
+.mesh-bg {
+    background-color: #eef2ff;
+    background-image:
+        radial-gradient(at 20% 20%, hsla(225,100%,88%,0.6) 0, transparent 60%),
+        radial-gradient(at 80% 10%, hsla(261,80%,88%,0.5) 0, transparent 55%),
+        radial-gradient(at 50% 90%, hsla(210,100%,88%,0.5) 0, transparent 60%);
+}
+
+/* ── Auth page gradient ── */
+.auth-bg {
+    background: linear-gradient(135deg, #3730a3 0%, #4f46e5 50%, #6d28d9 100%);
+}
+
+/* ── Badge glow ── */
+.badge-gold  { box-shadow: 0 0 10px rgba(245,158,11,0.45); }
+.badge-indigo { box-shadow: 0 0 10px rgba(99,102,241,0.40); }
+.badge-green  { box-shadow: 0 0 10px rgba(34,197,94,0.35); }
+
+/* ── Input focus ring ── */
+.field {
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 14px 18px;
+    width: 100%;
+    font-weight: 600;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.field:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 4px rgba(99,102,241,0.12);
+    background: #fff;
+}
+.field::placeholder { color: #94a3b8; font-weight: 500; }
+
+/* ── Primary button ── */
+.btn-primary {
+    background: #4f46e5;
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    padding: 14px 28px;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 14px rgba(79,70,229,0.35);
+}
+.btn-primary:hover { background: #4338ca; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(79,70,229,0.4); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-dark {
+    background: #0f172a;
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    padding: 14px 28px;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+.btn-dark:hover { background: #4f46e5; transform: translateY(-1px); }
+
+/* ── Auction status pills ── */
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 999px;
+}
+
+/* ── Timer ── */
+.timer-live  { background: #fef2f2; color: #ef4444; }
+.timer-done  { background: #f0fdf4; color: #22c55e; }
+.timer-fin   { background: #fffbeb; color: #d97706; }
+
+/* ── Chat bubble ── */
+.bubble-me   { background: #4f46e5; color: #fff; border-radius: 18px 18px 4px 18px; }
+.bubble-them { background: #f1f5f9; color: #0f172a; border-radius: 18px 18px 18px 4px; }
+
+/* ── Overlay dropdown ── */
+.dropdown-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+}
+
+/* ── Stat chip ── */
+.stat-chip {
+    background: #fef9c3;
+    color: #a16207;
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 11px;
+}
